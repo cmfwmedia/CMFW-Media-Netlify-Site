@@ -1,5 +1,4 @@
 import fetch from 'node-fetch'
-require('dotenv').config()
 
 export default async (req) => {
     const { next_run } = await req.json()
@@ -21,5 +20,5 @@ export default async (req) => {
 }
 
 export const config = {
-    schedule: "*/10 * * * *"
+    schedule: "*/1 * * * *"
 }
