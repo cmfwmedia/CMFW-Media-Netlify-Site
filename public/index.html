@@ -25,98 +25,151 @@
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary
                         button</button>
-                    <button id="fetch-btn-drones" type="button"
-                        class="btn btn-primary btn-lg px-4 gap-3">Secondary</button>
-                    <button id="fetch-btn-flights" type="button" class="btn btn-primary btn-lg px-4 gap-3">Thirdly
-                        button</button>
                 </div>
-                <p id="response-output">Response Placeholder</p>
+            </div>
+        </div>
+        <div id="injection"></div>
+        <div class="container px-4 py-1">
+            <div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+                <div class="feature col">
+                    <img src="https://images.squarespace-cdn.com/content/65022074520ebd181f024ee1/6e6477ba-2023-4574-8b31-ff234d9cb726/dji+mavic+mini.png?content-type=image%2Fpng"
+                        class="img-thumbnail" alt="...">
+                    <h3 class="fs-2 text-body-emphasis">CMFW Mavic Air</h3>
+                    <h4 class="fs-2 text-body-emphasis">DJI Mavic Mini</h4>
+                    <p>Number of Flights: 12</p>
+                    <p>Total Flight Time: 12h, 12m, 12s</p>
+                    <p>Status: Retired</p>
+                    <a href="#" class="icon-link">
+                        More
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="feature col">
+                    <img src="https://images.squarespace-cdn.com/content/65022074520ebd181f024ee1/5f0c541f-df69-43a7-902a-9a338fbeb7de/DJI+Mavic+3E.jpg?content-type=image%2Fjpeg"
+                        class="img-thumbnail" alt="...">
+                    <h3 class="fs-2 text-body-emphasis">Goose</h3>
+                    <h4 class="fs-2 text-body-emphasis">DJI Mavic 3E</h4>
+                    <p>Number of Flights: 10</p>
+                    <p>Total Flight Time: 12h, 12m, 12s</p>
+                    <p>Status: Airworthy</p>
+                    <a href="#" class="icon-link">
+                        More
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="feature col">
+                    <img src="https://images.squarespace-cdn.com/content/65022074520ebd181f024ee1/14b3046b-cb01-4793-ad41-dcb5d179d99c/DJI+Air+2S.jpg?content-type=image%2Fjpeg"
+                        class="img-thumbnail" alt="...">
+                    <h3 class="fs-2 text-body-emphasis">Philip</h3>
+                    <h4 class="fs-2 text-body-emphasis">DJI Air 2S</h4>
+                    <p>Number of Flights: 176</p>
+                    <p>Total Flight Time: 12h, 12m, 12s</p>
+                    <p>Status: Airworthy</p>
+                    <a href="#" class="icon-link">
+                        More
+                        <svg class="bi">
+                            <use xlink:href="#chevron-right"></use>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
-    <!-- <h1>CMFW Media Netlify Site</h1>
-    <button id="fetch-btn">Fetch Data</button>
-    <button id="fetch-btn-drones">Fetch Drone Data</button>
-    <button id="fetch-btn-flights">Fetch Flight Data</button>
-    <p id="response-output">Response Placeholder</p>
-    <div id="data-container" class="container">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    Column
-                </div>
-                <div class="col">
-                    Column
-                </div>
-                <div class="col">
-                    Column
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
-        integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const fetchBtnFlights = document.getElementById('fetch-btn-flights')
-            const fetchBtnDrones = document.getElementById('fetch-btn-drones')
-            const fetchBtn = document.getElementById('fetch-btn')
-            const responseText = document.getElementById('response-output')
 
+            const fetchBtn = document.getElementById('fetch-btn')
+
+            const SpecificDroneUrl = "https://www.dronelogbook.com/inventory/droneDetail.php?id="
 
             fetchBtn.addEventListener('click', async () => {
-                const request1 = fetch('/.netlify/functions/getDrones').then(response => response.json());
+                const request1 = fetch('/.netlify/functions/getData').then(response => response.json());
                 const request2 = fetch('/.netlify/functions/getFlights').then(response => response.json());
-                Promise.all([request1, request2])
-                    .then(([data1, data2]) => {
-                        console.log(data1, data2);
-                        responseText.innerText = JSON.stringify(data1)
+                const request3 = fetch('/.netlify/functions/getDrones').then(response => response.json());
+
+                Promise.all([request1, request2, request3])
+                    .then(([data1, data2, data3]) => {
+                        console.log(data1);
+                        console.log(data2);
+                        console.log(data3);
+                        createElements(data1);
+
+                        function createElements(responseData) {
+                            const container = document.querySelector('#injection');
+
+                            if (!container) {
+                                console.error('Container element not found');
+                                return;
+                            }
+
+                            responseData.forEach(arritem => {
+                                const div = document.createElement('div');
+                                div.classList.add('feature', 'col');
+
+                                const img = document.createElement('img');
+                                img.classList.add('img-thumbnail');
+                                img.setAttribute('src', arritem.image_url);
+                                img.setAttribute('alt', 'drone picture');
+                                div.appendChild(img);
+
+                                const h3 = document.createElement('h3');
+                                h3.classList.add('fs-2', 'text-body-emphasis');
+                                h3.textContent = arritem.name;
+                                div.appendChild(h3);
+
+                                const h4 = document.createElement('h4');
+                                h4.classList.add('fs-2', 'text-body-emphasis');
+                                h4.textContent = arritem.model;
+                                div.appendChild(h4);
+
+                                const p = document.createElement('p');
+                                p.textContent = `Number of Flights: ${arritem.number_of_flights}`;
+                                div.appendChild(p);
+
+                                container.appendChild(div);
+                            });
+                        }
+
+
                     })
                     .catch(error => {
                         console.error(error);
                     });
             })
 
-            fetchBtnDrones.addEventListener('click', async () => {
-                const response = await fetch('/.netlify/functions/getDrones')
-                    .then(response => response.json()
-                    )
-                //console.log(response)
 
-                responseText.innerText = JSON.stringify(response)
-                //  console.log(response)
-            })
+            // fetchBtnFlights.addEventListener('click', async () => {
+            //     const response = await fetch('/.netlify/functions/getFlights')
+            //         .then(response => response.json()
+            //         )
+            //     // console.log(response)
 
-            fetchBtnFlights.addEventListener('click', async () => {
-                const response = await fetch('/.netlify/functions/getFlights')
-                    .then(response => response.json()
-                    )
-                // console.log(response)
+            //     const aggregatedData = {};
 
-                const aggregatedData = {};
+            //     response.forEach(item => {
+            //         const { duration_seconds, drone_guid } = item;
 
-                response.forEach(item => {
-                    const { duration_seconds, drone_guid } = item;
+            //         if (drone_guid in aggregatedData) {
+            //             // If drone_guid already exists in aggregatedData, add duration_seconds to its value
+            //             aggregatedData[drone_guid].duration += parseFloat(duration_seconds);
+            //             aggregatedData[drone_guid].numFlights++;
+            //         } else {
+            //             // If drone_guid is new, create a new property with duration_seconds as its value
+            //             aggregatedData[drone_guid] = {
+            //                 duration: parseFloat(duration_seconds),
+            //                 numFlights: 1
+            //             };
+            //         }
+            //     });
 
-                    if (drone_guid in aggregatedData) {
-                        // If drone_guid already exists in aggregatedData, add duration_seconds to its value
-                        aggregatedData[drone_guid].duration += parseFloat(duration_seconds);
-                        aggregatedData[drone_guid].numFlights++;
-                    } else {
-                        // If drone_guid is new, create a new property with duration_seconds as its value
-                        aggregatedData[drone_guid] = {
-                            duration: parseFloat(duration_seconds),
-                            numFlights: 1
-                        };
-                    }
-                });
-
-                responseText.innerText = JSON.stringify(aggregatedData)
-                //  console.log(aggregatedData)
-            })
+            //     responseText.innerText = JSON.stringify(aggregatedData)
+            //     //  console.log(aggregatedData)
+            // })
         })
     </script>
 </body>
