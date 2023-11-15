@@ -1,5 +1,6 @@
 import fetch from 'node-fetch'
 require('dotenv').config()
+//s
 
 
 //TO DO, MAKE SCRIPT DYNAMICALLY GET ALL PAGES, NOT HARD CODED
