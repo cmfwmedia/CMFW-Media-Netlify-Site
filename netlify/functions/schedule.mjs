@@ -1,4 +1,11 @@
 import fetch from 'node-fetch'
+require('dotenv').config()
+const { createClient } = require('@supabase/supabase-js');
+
+// Initialize Supabase client
+const supabaseUrl = process.env.DATABASE_URL
+const supabaseKey = process.env.SUPABASE_SERVICE_API_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default async (req) => {
     const { next_run } = await req.json()
@@ -33,7 +40,26 @@ export default async (req) => {
 
     // Example usage:
     const testJSONData = createTestJSON();
-  
+
+    try {
+        const { data, error } = await supabase
+            .from('jsontest') // Replace 'your_table_name' with the actual table name
+            .insert([
+                {
+                    jsoncol: testJSONData, // Replace column1, column2, ... with your column names
+                    // Add more columns and values as needed
+                },
+            ]);
+
+        if (error) {
+            console.error('Error adding row:', error.message);
+            return;
+        }
+
+        console.log('Row added successfully:', data);
+    } catch (error) {
+        console.error('Error adding row:', error.message);
+    }
 
 
 
