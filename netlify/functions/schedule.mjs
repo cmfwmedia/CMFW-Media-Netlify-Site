@@ -1,5 +1,8 @@
 import fetch from 'node-fetch'
-require('dotenv').config()
+import dotenv  from "dotenv"
+
+dotenv.config()
+
 const { createClient } = require('@supabase/supabase-js');
 
 // Initialize Supabase client
@@ -60,23 +63,6 @@ export default async (req) => {
     } catch (error) {
         console.error('Error adding row:', error.message);
     }
-
-
-
-
-    // const request1 = fetch('/.netlify/functions/getData').then(response => response.json());
-    // const request2 = fetch('/.netlify/functions/getFlights').then(response => response.json());
-    // const request3 = fetch('/.netlify/functions/getDrones').then(response => response.json());
-
-    // Promise.all([request1, request2, request3])
-    //     .then(([data1, data2, data3]) => {
-    //         console.log(data1);
-    //         console.log(data2);
-    //         console.log(data3);
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //     });
     console.log("Received event! Next invocation at:", next_run)
     console.log(testJSONData);
 
