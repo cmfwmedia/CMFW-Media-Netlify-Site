@@ -23,8 +23,9 @@
                 <p class="lead mb-4">This is the netlify-hosted site for CMFW Media.</p>
                 <h3 class="display-5">API endpoint testing</h3>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary
+                    <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Call
                         button</button>
+                    <button id="fetch-db" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchDB</button>
                 </div>
             </div>
         </div>
@@ -84,8 +85,14 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             const fetchBtn = document.getElementById('fetch-btn')
+            const fetchDb = document.getElementById('fetch-db')
 
             const SpecificDroneUrl = "https://www.dronelogbook.com/inventory/droneDetail.php?id="
+
+            fetchDb.addEventListener('click', async () => {
+                const request1 = fetch('/.netlify/functions/getData').then(response => response.json());
+                console.log("success, here is the result:" + request1)
+            })
 
             fetchBtn.addEventListener('click', async () => {
                 const request1 = fetch('/.netlify/functions/getData').then(response => response.json());
