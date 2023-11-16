@@ -36,7 +36,7 @@ export default async (req) => {
     // Get everything from the notes table
     let { data: notes, error } = await supabase
         .from('jasontest')
-        .select('*')
+        .select('testText')
 
         console.log(notes)
         console.log(error)
