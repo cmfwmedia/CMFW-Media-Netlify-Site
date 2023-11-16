@@ -45,7 +45,6 @@ export default async (req) => {
         const { data, error } = await supabase
             .from('jasontest')
             .select('testText')
-            .order('createdAt', { ascending: false })
             .limit(1);
 
         if (error) {
