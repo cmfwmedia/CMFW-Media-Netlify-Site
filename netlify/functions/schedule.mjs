@@ -43,9 +43,8 @@ export default async (req) => {
 
     try {
         const { data, error } = await supabase
-            .from('jasontest')
-            .select('testText')
-            .limit(1);
+            .from('jsonTest')
+            .select('example');
 
         if (error) {
             console.error('Error fetching data:', error.message);
@@ -53,8 +52,10 @@ export default async (req) => {
         }
 
         if (data.length > 0) {
-            const textTestValue = data[0].textTest;
-            console.log('Value of textTest column from the most recent row:', textTestValue);
+            console.log('Values under the "example" column:');
+            data.forEach(row => {
+                console.log(row.example);
+            });
         } else {
             console.log('No rows found in the table');
         }
