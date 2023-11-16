@@ -9,29 +9,11 @@ const supabaseUrl = process.env.DATABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_API_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const testJSON = {
-    elements: [
-        {
-            id: 1,
-            name: 'Element 1',
-            value: 10,
-            description: 'This is element 1'
-        },
-        {
-            id: 2,
-            name: 'Element 2',
-            value: 20,
-            description: 'This is element 2'
-        },
-        {
-            id: 3,
-            name: 'Element 3',
-            value: 30,
-            description: 'This is element 3'
-        }
-        // Add more elements as needed
-    ]
-};
+const simpleJSON = {
+    name: 'John Doe',
+    age: 30,
+    email: 'john@example.com'
+  };
 
 export default async (req) => {
     const { next_run } = await req.json()
@@ -42,7 +24,7 @@ export default async (req) => {
             .from('jsontest') // Replace 'your_table_name' with the actual table name
             .insert([
                 {
-                    jsoncol: testJSON, // Replace column1, column2, ... with your column names
+                    jsoncol: simpleJSON, // Replace column1, column2, ... with your column names
                     // Add more columns and values as needed
                 },
             ]);
@@ -57,7 +39,7 @@ export default async (req) => {
         console.error('Error adding row:', error.message);
     }
     console.log("Received event! Next invocation at:", next_run)
-    console.log(testJSON);
+    console.log(simpleJSON);
 
 }
 
