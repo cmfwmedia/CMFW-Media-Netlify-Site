@@ -13,7 +13,7 @@ const simpleJSON = {
     name: 'John Doe',
     age: 30,
     email: 'john@example.com'
-  };
+};
 
 export default async (req) => {
     const { next_run } = await req.json()
@@ -24,7 +24,7 @@ export default async (req) => {
             .from('jsontest') // Replace 'your_table_name' with the actual table name
             .insert([
                 {
-                    jsoncol: simpleJSON, // Replace column1, column2, ... with your column names
+                    testText: "this is a text test", // Replace column1, column2, ... with your column names
                     // Add more columns and values as needed
                 },
             ]);
@@ -35,12 +35,11 @@ export default async (req) => {
         }
 
         console.log('Row added successfully:', data);
+        console.log("Received event! Next invocation at:", next_run)
+
     } catch (error) {
         console.error('Error adding row:', error.message);
     }
-    console.log("Received event! Next invocation at:", next_run)
-    console.log(simpleJSON);
-
 }
 
 export const config = {
