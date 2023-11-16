@@ -33,15 +33,14 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 // }
 
 export default async (req) => {
-    // Insert a row
-    const { data, error } = await supabase
+    // Get everything from the notes table
+    let { data: notes, error } = await supabase
         .from('jsontest')
-        .insert([
-            { testText: 'I need to not forget this' },
-        ]);
+        .select('*')
 
-    // Did it work?
-    console.log(data, error);
+        console.log(notes)
+        console.log(error)
+
 }
 
 export const config = {
