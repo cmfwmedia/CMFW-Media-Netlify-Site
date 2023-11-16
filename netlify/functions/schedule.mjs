@@ -41,29 +41,45 @@ export default async (req) => {
     //     console.log(notes)
     //     console.log(error)
 
+    // try {
+    //     const { data, error } = await supabase
+    //         .from('jsonTest')
+    //         .select('example');
+
+    //     if (error) {
+    //         console.error('Error fetching data:', error.message);
+    //         return;
+    //     }
+
+    //     if (data.length > 0) {
+    //         console.log('Values under the "example" column:');
+    //         data.forEach(row => {
+    //             console.log(row.example);
+    //         });
+    //     } else {
+    //         console.log('No rows found in the table');
+    //     }
+    // } catch (error) {
+    //     console.error('Error fetching data:', error.message);
+    // }
+
     try {
         const { data, error } = await supabase
             .from('jsonTest')
-            .select('example');
+            .insert([{ example: 'test' }]);
 
         if (error) {
-            console.error('Error fetching data:', error.message);
+            console.error('Error adding row:', error.message);
             return;
         }
 
-        if (data.length > 0) {
-            console.log('Values under the "example" column:');
-            data.forEach(row => {
-                console.log(row.example);
-            });
-        } else {
-            console.log('No rows found in the table');
-        }
+        console.log('Row added successfully:', data);
     } catch (error) {
-        console.error('Error fetching data:', error.message);
+        console.error('Error adding row:', error.message);
     }
-
 }
+
+
 
 export const config = {
     schedule: "* * * * *"

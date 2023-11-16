@@ -23,14 +23,14 @@
                 <p class="lead mb-4">This is the netlify-hosted site for CMFW Media.</p>
                 <h3 class="display-5">API endpoint testing</h3>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Call
-                        button</button>
+                    <!-- <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Call
+                        button</button> -->
                     <button id="fetch-db" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchDB</button>
                 </div>
             </div>
         </div>
         <div id="injection"></div>
-        <div class="container px-4 py-1">
+        <!-- <div class="container px-4 py-1">
             <div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
                 <div class="feature col">
                     <img src="https://images.squarespace-cdn.com/content/65022074520ebd181f024ee1/6e6477ba-2023-4574-8b31-ff234d9cb726/dji+mavic+mini.png?content-type=image%2Fpng"
@@ -78,108 +78,54 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            const fetchBtn = document.getElementById('fetch-btn')
             const fetchDb = document.getElementById('fetch-db')
-
             const SpecificDroneUrl = "https://www.dronelogbook.com/inventory/droneDetail.php?id="
 
             fetchDb.addEventListener('click', async () => {
-                const response = await fetch('/.netlify/functions/fetchDb')
-                    .then(response => response.json()
-                    )
-                console.log(response)
-                console.log("success, here is the result:" + response)
-            })
+                // const response = await fetch('/.netlify/functions/fetchDb')
+                //     .then(response => response.json()
+                //     )
+                // console.log(response)
+                try {
+                    const response = await fetch('/.netlify/functions/fetchDb')
+                        .then(response => response.json());
+                    console.log(response)
+                    // Check if response.getDrones.data exists and is an array
+                    if (response && response.getDrones && Array.isArray(response.getDrones.data)) {
+                        const customObjectsArray = [];
 
-            fetchBtn.addEventListener('click', async () => {
-                const request1 = fetch('/.netlify/functions/getData').then(response => response.json());
-                const request2 = fetch('/.netlify/functions/getFlights').then(response => response.json());
-                const request3 = fetch('/.netlify/functions/getDrones').then(response => response.json());
+                        response.getDrones.data.forEach(drone => {
+                            // Extracting properties and creating custom objects
+                            const customObject = {
+                                name: drone.name,
+                                model: drone.model,
+                                guid: drone.guid,
+                                brand: drone.brand,
+                                status: drone.status,
+                                // Add more properties as needed (flight_time, number_of_flights, image_url)
+                            };
 
-                Promise.all([request1, request2, request3])
-                    .then(([data1, data2, data3]) => {
-                        console.log(data1);
-                        console.log(data2);
-                        console.log(data3);
-                        createElements(data1);
+                            // Push the custom object into the custom array
+                            customObjectsArray.push(customObject);
+                        });
 
-                        function createElements(responseData) {
-                            const container = document.querySelector('#injection');
+                        // Logging the custom array of objects
+                        console.log(customObjectsArray);
 
-                            if (!container) {
-                                console.error('Container element not found');
-                                return;
-                            }
-
-                            responseData.forEach(arritem => {
-                                const div = document.createElement('div');
-                                div.classList.add('feature', 'col');
-
-                                const img = document.createElement('img');
-                                img.classList.add('img-thumbnail');
-                                img.setAttribute('src', arritem.image_url);
-                                img.setAttribute('alt', 'drone picture');
-                                div.appendChild(img);
-
-                                const h3 = document.createElement('h3');
-                                h3.classList.add('fs-2', 'text-body-emphasis');
-                                h3.textContent = arritem.name;
-                                div.appendChild(h3);
-
-                                const h4 = document.createElement('h4');
-                                h4.classList.add('fs-2', 'text-body-emphasis');
-                                h4.textContent = arritem.model;
-                                div.appendChild(h4);
-
-                                const p = document.createElement('p');
-                                p.textContent = `Number of Flights: ${arritem.number_of_flights}`;
-                                div.appendChild(p);
-
-                                container.appendChild(div);
-                            });
-                        }
-
-
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            })
-
-
-            // fetchBtnFlights.addEventListener('click', async () => {
-            //     const response = await fetch('/.netlify/functions/getFlights')
-            //         .then(response => response.json()
-            //         )
-            //     // console.log(response)
-
-            //     const aggregatedData = {};
-
-            //     response.forEach(item => {
-            //         const { duration_seconds, drone_guid } = item;
-
-            //         if (drone_guid in aggregatedData) {
-            //             // If drone_guid already exists in aggregatedData, add duration_seconds to its value
-            //             aggregatedData[drone_guid].duration += parseFloat(duration_seconds);
-            //             aggregatedData[drone_guid].numFlights++;
-            //         } else {
-            //             // If drone_guid is new, create a new property with duration_seconds as its value
-            //             aggregatedData[drone_guid] = {
-            //                 duration: parseFloat(duration_seconds),
-            //                 numFlights: 1
-            //             };
-            //         }
-            //     });
-
-            //     responseText.innerText = JSON.stringify(aggregatedData)
-            //     //  console.log(aggregatedData)
-            // })
+                        // Call a function to generate HTML elements using this custom array
+                        // generateHTMLElements(customObjectsArray);
+                    } else {
+                        console.log('Invalid data format or missing data in the response');
+                    }
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
         })
     </script>
 </body>
