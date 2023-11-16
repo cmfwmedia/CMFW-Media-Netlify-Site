@@ -3,7 +3,8 @@ import dotenv from "dotenv"
 import { createClient } from '@supabase/supabase-js'
 dotenv.config()
 const supabaseUrl = process.env.DATABASE_URL
-const supabaseKey = process.env.SUPABASE_SERVICE_API_KEY;
+// const supabaseKey = process.env.SUPABASE_SERVICE_API_KEY;
+const supabaseKey = "edajfek";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 
