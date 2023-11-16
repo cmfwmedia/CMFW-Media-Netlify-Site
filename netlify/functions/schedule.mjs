@@ -35,7 +35,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 export default async (req) => {
     // Get everything from the notes table
     let { data: notes, error } = await supabase
-        .from('jsontest')
+        .from('jasontest')
         .select('*')
 
         console.log(notes)
