@@ -32,7 +32,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 //     }
 // }
 
-export const handler = async (event) => {
+export default async (req) => {
     // Insert a row
     const { data, error } = await supabase
         .from('jsontest')
