@@ -6,41 +6,58 @@ const supabaseUrl = process.env.DATABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_API_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-export default async (req) => {
+// scheduledFetchData.js
 
-    const apiKey = process.env.DRONELOGBOOK_API_KEY
-    const url = `https://api.dronelogbook.com/drone`;
+exports.handler = async function (event, context) {
+    const apiKey = process.env.DRONELOGBOOK_API_KEY; // Replace with your actual API key
 
+    const fetchOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'apiKey': apiKey,
+        }
+    };
 
-    console.log(response)
-    const { next_run } = await req.json()
-    console.log("Received event! Next invocation at:", next_run)
+    // Function to make a fetch call
+    async function fetchData(url) {
+        try {
+            const response = await fetch(url, fetchOptions);
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
+        }
+    }
 
+    // Array of URLs for the fetch calls
+    const urls = [
+        'https://api.dronelogbook.com/flight',
+        'https://api.dronelogbook.com/drone'
+    ];
+
+    // Perform fetch calls for all URLs and store their promises in an array
+    const fetchPromises = urls.map(url => fetchData(url));
 
     try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'apiKey': `${apiKey}`,
-            }
-        });
+        // Wait for all fetch calls to resolve using Promise.all()
+        const responses = await Promise.all(fetchPromises);
 
-        const { data, error } = await supabase
-            .from('jsonTest')
-            .insert([{ getFlights: response }]);
+        // Log the array of responses
+        console.log('Responses:', responses);
 
-        if (error) {
-            console.error('Error adding row:', error.message);
-            return;
-        }
-
-        console.log('Row added successfully:', data);
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'Scheduled fetch completed' })
+        };
     } catch (error) {
-        console.error('Error adding row:', error.message);
+        console.error('Error:', error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'Internal server error' })
+        };
     }
-}
+};
 
-export const config = {
-    schedule: "* * * * *"
-}
+exports.handler.schedule = '*/1 * * * *'; // Run every minute
