@@ -10,20 +10,25 @@ export default async (req) => {
 
     const apiKey = process.env.DRONELOGBOOK_API_KEY
     const url = `https://api.dronelogbook.com/drone`;
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'apiKey': `${apiKey}`,
-        }
-    });
+
 
     console.log(response)
+    const { next_run } = await req.json()
+    console.log("Received event! Next invocation at:", next_run)
+
 
     try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'apiKey': `${apiKey}`,
+            }
+        });
+
         const { data, error } = await supabase
             .from('jsonTest')
-            .insert([{ example: 'test' }]);
+            .insert([{ getFlights: response }]);
 
         if (error) {
             console.error('Error adding row:', error.message);
