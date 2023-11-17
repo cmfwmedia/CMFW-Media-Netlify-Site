@@ -3,14 +3,14 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const endpoints = [
-    'https://api.dronelogbook.com/equipment',
+    // 'https://api.dronelogbook.com/equipment',
     'https://api.dronelogbook.com/flight',
-    'https://api.dronelogbook.com/customer',
-    'https://api.dronelogbook.com/project',
-    'https://api.dronelogbook.com/user',
+    // 'https://api.dronelogbook.com/customer',
+    // 'https://api.dronelogbook.com/project',
+    //  'https://api.dronelogbook.com/user',
     'https://api.dronelogbook.com/drone',
-    'https://api.dronelogbook.com/company',
-    'https://api.dronelogbook.com/place',
+    // 'https://api.dronelogbook.com/company',
+    // 'https://api.dronelogbook.com/place',
 ];
 
 const apiKey = process.env.DRONELOGBOOK_API_KEY;
@@ -71,5 +71,5 @@ export default async (event, context) => {
 };
 
 export const config = {
-    schedule: "0 * * * *"
+    schedule: "* * * * *"
 }
