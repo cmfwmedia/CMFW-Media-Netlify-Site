@@ -26,6 +26,8 @@
                     <!-- <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Call
                         button</button> -->
                     <button id="fetch-api" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchAPI</button>
+                    <button id="fetch-drone" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetch drone</button>
+                    <button id="fetch-place" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetch place</button>
                     <button id="fetch-db" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchDB</button>
                 </div>
             </div>
@@ -85,13 +87,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const fetchDb = document.getElementById('fetch-db')
+            const fetchDrone = document.getElementById('fetch-drone')
+            const fetchPlace = document.getElementById('fetch-place')
             const fetchApi = document.getElementById('fetch-api')
             const SpecificDroneUrl = "https://www.dronelogbook.com/inventory/droneDetail.php?id="
 
             fetchApi.addEventListener('click', async () => {
-                const response = await fetch('/.netlify/functions/allApiCaller')
+                const response = await fetch('/.netlify/functions/getFlights')
                     .then(response => response.json()
                     )
+                console.log(response)
+            })
+            fetchPlace.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/getPlaces')
+                    .then(response => response.json()
+                    )
+                console.log(response)
+            })
+            fetchDrone.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/getDrones')
+                    .then(response => response.json()
+                    )
+                console.log(response)
             })
 
             fetchDb.addEventListener('click', async () => {
