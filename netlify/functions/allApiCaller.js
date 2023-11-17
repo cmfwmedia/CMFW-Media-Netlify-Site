@@ -70,4 +70,6 @@ export default async (event, context) => {
     }
 };
 
-exports.handler.schedule = '*/1 * * * *'; 
+export const config = {
+    schedule: "* * * * *"
+}
