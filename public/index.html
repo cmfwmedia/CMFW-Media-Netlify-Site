@@ -25,6 +25,7 @@
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                     <!-- <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Call
                         button</button> -->
+                    <button id="fetch-api" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchAPI</button>
                     <button id="fetch-db" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchDB</button>
                 </div>
             </div>
@@ -84,7 +85,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const fetchDb = document.getElementById('fetch-db')
+            const fetchApi = document.getElementById('fetch-api')
             const SpecificDroneUrl = "https://www.dronelogbook.com/inventory/droneDetail.php?id="
+
+            fetchApi.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/allApiCaller')
+                    .then(response => response.json()
+                    )
+            })
 
             fetchDb.addEventListener('click', async () => {
                 // const response = await fetch('/.netlify/functions/fetchDb')

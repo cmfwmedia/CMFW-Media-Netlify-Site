@@ -43,7 +43,8 @@ async function fetchData(url, allData = []) {
 }
 
 
-export default async (event, context) => {
+//export default async (event, context) => {
+export const handler = async (event, context) => {
     try {
         const results = await Promise.all(
             endpoints.map(async (endpoint) => {
@@ -70,6 +71,6 @@ export default async (event, context) => {
     }
 };
 
-export const config = {
-    schedule: "* 1 * * *"
-}
+// export const config = {
+//     schedule: "* 1 * * *"
+// }
