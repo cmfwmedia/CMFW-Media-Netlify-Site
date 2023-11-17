@@ -42,8 +42,8 @@ export const handler = async (event, context) => {
 
         // Push flightData to Supabase
         const { data, error } = await supabase
-            .from('jsonTest')
-            .update([{ '/flight': flightData }])
+            .from('dronelogbook api container')
+            .update([{ 'flight': flightData }])
             .match({ id: 1 }); // Update only the row(s) with id = 1
 
         if (error) {
@@ -62,8 +62,4 @@ export const handler = async (event, context) => {
             body: JSON.stringify({ error: 'Failed to push data to Supabase' }),
         };
     }
-}
-
-export const config = {
-    schedule: "@hourly"
 }

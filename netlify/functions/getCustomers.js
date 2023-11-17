@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 require('dotenv').config()
 import { createClient } from '@supabase/supabase-js'
-const apiUrl = 'https://api.dronelogbook.com/place';
+const apiUrl = 'https://api.dronelogbook.com/customer';
 const apiKey = process.env.DRONELOGBOOK_API_KEY;
 const supabaseUrl = process.env.DATABASE_URL
 const supabaseKey = process.env.SUPABASE_SERVICE_API_KEY;
@@ -38,13 +38,12 @@ async function fetchData(url) {
 
 export const handler = async (event, context) => {
     try {
-        const placeData = await fetchData(apiUrl);
+        const customerData = await fetchData(apiUrl);
 
-        // Push flightData to Supabase
         const { data, error } = await supabase
             .from('dronelogbook api container')
-            .update([{ 'place': placeData }])
-            .match({ id: 1 }); // Update only the row(s) with id = 1
+            .update([{ 'customer': customerData }])
+            .match({ id: 1 });
 
         if (error) {
             throw new Error(error.message);
@@ -52,7 +51,7 @@ export const handler = async (event, context) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: 'Place data pushed to Supabase' }),
+            body: JSON.stringify({ message: 'Customer data pushed to Supabase' }),
         };
     } catch (error) {
         console.error('Error:', error);

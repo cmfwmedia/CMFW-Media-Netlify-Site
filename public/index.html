@@ -12,7 +12,7 @@
 
 <body>
     <main>
-        <h1 class="visually-hidden">Heroes examples</h1>
+        <h1 class="visually-hidden">CMFW Media</h1>
 
         <div class="px-4 py-5 my-5 text-center">
             <img class="d-block mx-auto mb-4"
@@ -23,12 +23,30 @@
                 <p class="lead mb-4">This is the netlify-hosted site for CMFW Media.</p>
                 <h3 class="display-5">API endpoint testing</h3>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <!-- <button id="fetch-btn" type="button" class="btn btn-primary btn-lg px-4 gap-3">Call
-                        button</button> -->
-                    <button id="fetch-api" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchAPI</button>
-                    <button id="fetch-drone" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetch drone</button>
-                    <button id="fetch-place" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetch place</button>
-                    <button id="fetch-db" type="button" class="btn btn-primary btn-lg px-4 gap-3">fetchDB</button>
+                    <div class="container mt-5">
+                        <button id="fetch-db" type="button" class="btn btn-primary">Fetch CMFWMDB</button>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button id="drone" type="button" class="btn btn-primary">Push Drone</button>
+                                <button id="flight" type="button" class="btn btn-primary">Push Flight</button>
+                                <button id="customer" type="button" class="btn btn-primary">Push Customer</button>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button id="company" type="button" class="btn btn-primary">Push Company</button>
+                                <button id="user" type="button" class="btn btn-primary">Push User</button>
+                                <button id="equipment" type="button" class="btn btn-primary">Push Equipment</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button id="project" type="button" class="btn btn-primary">Push Project</button>
+                                <button id="place" type="button" class="btn btn-primary">Push Place</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,70 +105,85 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const fetchDb = document.getElementById('fetch-db')
-            const fetchDrone = document.getElementById('fetch-drone')
-            const fetchPlace = document.getElementById('fetch-place')
-            const fetchApi = document.getElementById('fetch-api')
+            const drone = document.getElementById('drone')
+            const place = document.getElementById('place')
+            const customer = document.getElementById('customer')
+            const equipment = document.getElementById('equipment')
+            const company = document.getElementById('company')
+            const flight = document.getElementById('flight')
+            const user = document.getElementById('user')
+            const project = document.getElementById('project')
+
             const SpecificDroneUrl = "https://www.dronelogbook.com/inventory/droneDetail.php?id="
 
-            fetchApi.addEventListener('click', async () => {
+            window.addEventListener('load', async () => {
+                try {
+                    console.log('Window loaded. Fetching data...');
+
+                    const response = await fetch('/.netlify/functions/fetchDb')
+                        .then(response => response.json());
+
+                    console.log('Response:', response);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+
+            // fetchDb.addEventListener('click', async () => {
+            //     const response = await fetch('/.netlify/functions/fetchDb')
+            //         .then(response => response.json()
+            //         )
+            //     console.log(response)
+            // })
+
+            flight.addEventListener('click', async () => {
                 const response = await fetch('/.netlify/functions/getFlights')
                     .then(response => response.json()
                     )
                 console.log(response)
             })
-            fetchPlace.addEventListener('click', async () => {
+            place.addEventListener('click', async () => {
                 const response = await fetch('/.netlify/functions/getPlaces')
                     .then(response => response.json()
                     )
                 console.log(response)
             })
-            fetchDrone.addEventListener('click', async () => {
+            drone.addEventListener('click', async () => {
                 const response = await fetch('/.netlify/functions/getDrones')
                     .then(response => response.json()
                     )
                 console.log(response)
             })
-
-            fetchDb.addEventListener('click', async () => {
-                // const response = await fetch('/.netlify/functions/fetchDb')
-                //     .then(response => response.json()
-                //     )
-                // console.log(response)
-                try {
-                    const response = await fetch('/.netlify/functions/fetchDb')
-                        .then(response => response.json());
-                    console.log(response)
-                    // Check if response.getDrones.data exists and is an array
-                    if (response && response.getDrones && Array.isArray(response.getDrones.data)) {
-                        const customObjectsArray = [];
-
-                        response.getDrones.data.forEach(drone => {
-                            // Extracting properties and creating custom objects
-                            const customObject = {
-                                name: drone.name,
-                                model: drone.model,
-                                guid: drone.guid,
-                                brand: drone.brand,
-                                status: drone.status,
-                                // Add more properties as needed (flight_time, number_of_flights, image_url)
-                            };
-
-                            // Push the custom object into the custom array
-                            customObjectsArray.push(customObject);
-                        });
-
-                        // Logging the custom array of objects
-                        console.log(customObjectsArray);
-
-                        // Call a function to generate HTML elements using this custom array
-                        // generateHTMLElements(customObjectsArray);
-                    } else {
-                        console.log('Invalid data format or missing data in the response');
-                    }
-                } catch (error) {
-                    console.error('Error fetching data:', error);
-                }
-            });
+            customer.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/getCustomers')
+                    .then(response => response.json()
+                    )
+                console.log(response)
+            })
+            equipment.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/getEquipment')
+                    .then(response => response.json()
+                    )
+                console.log(response)
+            })
+            company.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/getCompany')
+                    .then(response => response.json()
+                    )
+                console.log(response)
+            })
+            user.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/getUsers')
+                    .then(response => response.json()
+                    )
+                console.log(response)
+            })
+            project.addEventListener('click', async () => {
+                const response = await fetch('/.netlify/functions/getProjects')
+                    .then(response => response.json()
+                    )
+                console.log(response)
+            })
         })
     </script>
 </body>

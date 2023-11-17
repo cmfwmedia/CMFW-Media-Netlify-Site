@@ -41,8 +41,8 @@ export const handler = async (event, context) => {
         const droneData = await fetchData(apiUrl);
 
         const { data, error } = await supabase
-            .from('jsonTest')
-            .update([{ '/drone': droneData }])
+            .from('dronelogbook api container')
+            .update([{ 'drone': droneData }])
             .match({ id: 1 }); // Update only the row(s) with id = 1
 
         if (error) {
