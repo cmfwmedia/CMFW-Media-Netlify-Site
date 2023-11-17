@@ -71,5 +71,5 @@ export default async (event, context) => {
 };
 
 export const config = {
-    schedule: "* * * * *"
+    schedule: "0 * * * *"
 }
