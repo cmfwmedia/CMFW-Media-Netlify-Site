@@ -45,12 +45,12 @@ async function fetchData(url, allData = []) {
 
 export default async (event, context) => {
     try {
-        const results = [];
-
-        for (const endpoint of endpoints) {
-            const data = await fetchData(endpoint);
-            results.push({ [endpoint]: data });
-        }
+        const results = await Promise.all(
+            endpoints.map(async (endpoint) => {
+                const data = await fetchData(endpoint);
+                return { [endpoint]: data };
+            })
+        );
 
         results.forEach((result) => {
             console.log(result);
