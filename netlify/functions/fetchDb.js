@@ -1,9 +1,9 @@
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 require('dotenv').config();
 import { createClient } from '@supabase/supabase-js';
 
-const apiUrl = 'https://api.dronelogbook.com/company';
-const apiKey = process.env.DRONELOGBOOK_API_KEY;
+// const apiUrl = 'https://api.dronelogbook.com/company';
+// const apiKey = process.env.DRONELOGBOOK_API_KEY;
 const supabaseUrl = process.env.DATABASE_URL;
 const supabaseKey = process.env.SUPABASE_SERVICE_API_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
