@@ -1,0 +1,41 @@
+<header class="mb-auto">
+    <div>
+        <a class="nav-link {{ if .IsHome }} active {{ end }} " href="{{ .Site.Home.Permalink }}">
+            <h3 class="float-md-start mb-0">Cover</h3>
+        </a>
+
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+
+
+            {{ $currentPage := . }}
+
+            {{ range .Site.Menus.main.ByWeight }}
+
+            {{ if .HasChildren }}
+            <li class="nav-item dropdown">
+                <a class='nav-link dropdown-toggle  {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{ end }}'
+                    href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ .Title }}
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {{ range .Children }}
+                    <li>
+                        <a class='dropdown-item  {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{ end }}'
+                            href="{{ .URL }}"> {{ .Title }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </li>
+
+            {{ else }}
+                <a class='nav-link fw-bold py-1 px-0 {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{ end }}'
+                    href="{{ absURL .URL }}">
+                    {{ .Title }}
+                </a>
+            {{ end }}
+
+            {{ end }}
+        </nav>
+    </div>
+</header>
