@@ -10,7 +10,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const handler = async (event, context) => {
     try {
-        const testdata = "lol";
+        const testdata = "lolol";
 
         // Push flightData to Supabase
         const { data, error } = await supabase
