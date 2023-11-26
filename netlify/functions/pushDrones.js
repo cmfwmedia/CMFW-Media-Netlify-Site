@@ -3,10 +3,9 @@ export default async (req) => {
 
     console.log("Received event! Next invocation at:", next_run)
 
-    const response = await fetch('https://cmfw-media-netlify-site.netlify.app/.netlify/functions/test')
+    const response = await fetch('https://cmfw-media-netlify-site.netlify.app/.netlify/functions/getDrones')
         .then(response => response.json()
         )
-
 }
 
 export const config = {
