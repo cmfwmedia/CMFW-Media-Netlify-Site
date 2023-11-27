@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,13 +8,11 @@
     <title>Equipment API Test Endpoint</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    
-    
+
+
+
     <style>
-
-
-        /* CSS for equipment display and responsiveness */
+    
 
 
         /* Styles for the equipment-injection container */
@@ -33,6 +32,23 @@
             box-sizing: border-box;
         }
 
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0;
+            }
+
+            /* more concise! */
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .dot {
+            animation: blink 2.5s infinite;
+        }
+
         /* Mobile first approach */
         /* Assume a mobile breakpoint at 768px, tablet breakpoint at 1024px, and desktop breakpoint at 1280px */
 
@@ -41,7 +57,7 @@
 
             /* Adjust styles for mobile view */
             .item-container {
-                width: calc(100% - 110px);
+                width: calc(100% - 60px);
                 /* Single item per row for mobile view */
             }
         }
@@ -275,4 +291,5 @@
     </script>
 
 </body>
+
 </html>
