@@ -1,0 +1,211 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (document.title === 'Aero360 Solutions') {
+
+            let timeout;
+            let hasScrolled = false;
+
+            function iconScroll() {
+                const iconElement = document.querySelector('.icon-scroll');
+                if (iconElement) {
+                    if (!hasScrolled) {
+                        iconElement.style.opacity = '0';
+                        hasScrolled = true;
+                    }
+
+                    if (window.scrollY === 0) {
+                        timeout = setTimeout(() => {
+                            iconElement.style.opacity = '1';
+                        }, 5000);
+                    } else {
+                        clearTimeout(timeout);
+                        iconElement.style.opacity = '0';
+                    }
+                }
+            }
+            iconScroll()
+
+
+            function updateSections() {
+                sections = document.getElementsByTagName('section');
+            }
+
+            function updateHeader() {
+                header = document.getElementsByTagName('header');
+            }
+
+            var sections = document.getElementsByTagName('section');
+            var header = document.getElementsByTagName('header');
+            var windowScrollPosition = window.scrollY;
+            var headerBackgroundSolid = document.querySelector('header .header-background-solid');
+            var logos = document.querySelectorAll('header img');
+            var burgerNavBarDivs = document.querySelectorAll('.burger-inner div');
+            var navSocialIcons = document.querySelectorAll('header .header-actions-action--social svg');
+            //console.log(navSocialIcons)
+            var navItem = document.querySelector('header .header-nav-item a')
+            // console.log(navItem)
+
+            var imgSrcDark = logos[0].src;
+            var imgSrcLight = 'https://images.squarespace-cdn.com/content/65022074520ebd181f024ee1/c765cc3b-a37f-4457-9060-5daa601f66cf/header+logo+light.png?content-type=image%2Fpng';
+
+            window.addEventListener('resize', function () {
+                updateSections();
+                updateHeader();
+                //  console.log(sections, header);
+            });
+
+            headerBackgroundSolid.style.transition = 'all 0.2s';
+            //  console.log(sections, header, imgSrcDark, imgSrcLight, windowScrollPosition);
+
+            function handleScroll() {
+                windowScrollPosition = window.scrollY;
+                // console.log(`Window scroll position: ${windowScrollPosition}px`);
+                // console.log(sections[3].offsetTop);
+                // console.log(header[0].offsetHeight);
+
+                if (windowScrollPosition >= 0) {
+                    navItem = document.querySelector('header .header-nav-item a')
+                    logos[0].src = imgSrcDark
+                    logos[1].src = imgSrcDark
+                    var targetSection = sections[0].children[0];
+                    var targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'white';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'white';
+                    });
+                    navItem.style.color = 'white';
+                }
+
+                if (windowScrollPosition >= (sections[3].offsetTop - header[0].offsetHeight)) {
+                    logos[0].src = imgSrcDark;
+                    logos[1].src = imgSrcDark;
+                    const targetSection = sections[3].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'white';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'white';
+                    });
+                    navItem.style.color = 'white';
+                }
+                if (windowScrollPosition >= (sections[4].offsetTop - header[0].offsetHeight)) { //panorama
+                    logos[0].src = imgSrcLight;
+                    logos[1].src = imgSrcLight;
+                    const targetSection = sections[4].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'black';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'black';
+                    });
+                    navItem.style.color = 'black';
+                }
+
+                if (windowScrollPosition >= (sections[5].offsetTop - header[0].offsetHeight)) { //3D
+                    logos[0].src = imgSrcLight;
+                    logos[1].src = imgSrcLight;
+                    const targetSection = sections[5].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                }
+                if (windowScrollPosition >= (sections[6].offsetTop - header[0].offsetHeight)) { // compare
+                    logos[0].src = imgSrcDark;
+                    logos[1].src = imgSrcDark;
+                    const targetSection = sections[6].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'white';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'white';
+                    });
+                    navItem.style.color = 'white';
+                }
+
+                if (windowScrollPosition >= (sections[7].offsetTop - header[0].offsetHeight)) { //virtual tour
+                    logos[0].src = imgSrcLight;
+                    logos[1].src = imgSrcLight;
+                    const targetSection = sections[7].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'black';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'black';
+                    });
+                    navItem.style.color = 'black';
+                }
+
+                if (windowScrollPosition >= (sections[8].offsetTop - header[0].offsetHeight)) { //overlay
+                    logos[0].src = imgSrcDark;
+                    logos[1].src = imgSrcDark;
+                    const targetSection = sections[8].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'white';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'white';
+                    });
+                    navItem.style.color = 'white';
+                }
+
+                if (windowScrollPosition >= (sections[9].offsetTop - header[0].offsetHeight)) { //team annotations
+                    logos[0].src = imgSrcLight;
+                    logos[1].src = imgSrcLight;
+                    const targetSection = sections[9].children[0].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'black';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'black';
+                    });
+                    navItem.style.color = 'black';
+                }
+                if (windowScrollPosition >= (sections[10].offsetTop - header[0].offsetHeight)) {
+                    logos[0].src = imgSrcDark;
+                    logos[1].src = imgSrcDark;
+                    const targetSection = sections[10].children[0];
+                    const targetColor = window.getComputedStyle(targetSection).backgroundColor;
+                    headerBackgroundSolid.style.backgroundColor = targetColor;
+                    burgerNavBarDivs.forEach(div => {
+                        div.style.backgroundColor = 'white';
+                    });
+                    navSocialIcons.forEach(div => {
+                        div.style.fill = 'white';
+                    });
+                    navItem.style.color = 'white';
+                }
+
+                if (windowScrollPosition >= (sections[10].offsetTop - header[0].offsetHeight)) {
+                    header[0].style.position = 'absolute';
+                    header[0].style.top = `${sections[10].offsetTop - header[0].offsetHeight}px`;
+
+                    setTimeout(function () {
+                        var buttonElement = document.querySelector('#block-yui_3_17_2_1_1695248445095_10610 button');
+                        buttonElement.classList.add('button-flash');
+                    }, 2100);
+
+                } else {
+                    header[0].style.position = 'fixed';
+                    header[0].style.top = 'initial'
+                }
+            }
+            window.addEventListener('scroll', function () {
+                handleScroll();
+            });
+        }
+    });
+</script>
