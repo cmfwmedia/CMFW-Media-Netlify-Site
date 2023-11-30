@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,9 +8,9 @@
     <title>Projects API Test Endpoint</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-    
-    
+
+
+
     <style>
 
     </style>
@@ -26,9 +27,31 @@
         <div id="injection-projects"></div>
     </main>
 
-  <script>
-    
-  </script>
+    <script>
+       
+        document.addEventListener('DOMContentLoaded', () => {
+
+            window.addEventListener('load', async () => {
+
+                try {
+                    console.log('Window loaded. Fetching data...');
+
+                    const response = await fetch('/.netlify/functions/getGoogleMapsStatic')
+                        .then(response => response.json());
+
+                    console.log('Response:', response);
+
+                }
+                catch {
+                    console.log('error')
+                }
+            });
+
+        })
+
+
+    </script>
 
 </body>
+
 </html>

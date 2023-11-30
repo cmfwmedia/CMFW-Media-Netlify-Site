@@ -61,9 +61,8 @@
             var logos = document.querySelectorAll('header img');
             var burgerNavBarDivs = document.querySelectorAll('.burger-inner div');
             var navSocialIcons = document.querySelectorAll('header .header-actions-action--social svg');
-            //console.log(navSocialIcons)
-            var navItem = document.querySelector('header .header-nav-item a')
-            // console.log(navItem)
+            var navItems = document.querySelectorAll('header .header-nav-item a')
+
 
             var imgSrcDark = logos[0].src;
             var imgSrcLight = 'https://images.squarespace-cdn.com/content/65022074520ebd181f024ee1/c765cc3b-a37f-4457-9060-5daa601f66cf/header+logo+light.png?content-type=image%2Fpng';
@@ -96,7 +95,9 @@
                     navSocialIcons.forEach(div => {
                         div.style.fill = 'white';
                     });
-                    navItem.style.color = 'white';
+                    navItems.forEach(div => {
+                        div.style.color = 'white';
+                    })
                 }
 
                 if (windowScrollPosition >= (sections[3].offsetTop - header[0].offsetHeight)) {
@@ -111,7 +112,9 @@
                     navSocialIcons.forEach(div => {
                         div.style.fill = 'white';
                     });
-                    navItem.style.color = 'white';
+                    navItems.forEach(div => {
+                        div.style.color = 'white';
+                    })
                 }
                 if (windowScrollPosition >= (sections[4].offsetTop - header[0].offsetHeight)) { //panorama
                     logos[0].src = imgSrcLight;
@@ -125,7 +128,9 @@
                     navSocialIcons.forEach(div => {
                         div.style.fill = 'black';
                     });
-                    navItem.style.color = 'black';
+                    navItems.forEach(div => {
+                        div.style.color = 'black';
+                    })
                 }
 
                 if (windowScrollPosition >= (sections[5].offsetTop - header[0].offsetHeight)) { //3D
@@ -147,7 +152,9 @@
                     navSocialIcons.forEach(div => {
                         div.style.fill = 'white';
                     });
-                    navItem.style.color = 'white';
+                    navItems.forEach(div => {
+                        div.style.color = 'white';
+                    })
                 }
 
                 if (windowScrollPosition >= (sections[7].offsetTop - header[0].offsetHeight)) { //virtual tour
@@ -162,7 +169,9 @@
                     navSocialIcons.forEach(div => {
                         div.style.fill = 'black';
                     });
-                    navItem.style.color = 'black';
+                    navItems.forEach(div => {
+                        div.style.color = 'black';
+                    })
                 }
 
                 if (windowScrollPosition >= (sections[8].offsetTop - header[0].offsetHeight)) { //overlay
@@ -177,7 +186,9 @@
                     navSocialIcons.forEach(div => {
                         div.style.fill = 'white';
                     });
-                    navItem.style.color = 'white';
+                    navItems.forEach(div => {
+                        div.style.color = 'white';
+                    })
                 }
 
                 if (windowScrollPosition >= (sections[9].offsetTop - header[0].offsetHeight)) { //team annotations
@@ -192,7 +203,9 @@
                     navSocialIcons.forEach(div => {
                         div.style.fill = 'black';
                     });
-                    navItem.style.color = 'black';
+                    navItems.forEach(div => {
+                        div.style.color = 'black';
+                    })
                 }
                 if (windowScrollPosition >= (sections[10].offsetTop - header[0].offsetHeight)) {
                     logos[0].src = imgSrcDark;
