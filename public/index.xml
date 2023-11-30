@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CMFW Media on My New Hugo Site</title>
+    <title>CMFW Media</title>
     <link>https://example.org/</link>
-    <description>Recent content in CMFW Media on My New Hugo Site</description>
+    <description>Recent content on CMFW Media</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Booking Page</title>
-      <link>https://example.org/booking-page/</link>
+      <title>API Endpoint Testing</title>
+      <link>https://example.org/api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/booking-page/</guid>
-      <description>booking-page This page is currently under construction</description>
+      <guid>https://example.org/api/</guid>
+      <description>API Endpoint Testing </description>
     </item>
     <item>
       <title>Contact</title>
@@ -20,6 +20,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://example.org/contact/</guid>
       <description>Email addressWe&#39;ll never share your email with anyone else.PasswordCheck me outSubmit</description>
+    </item>
+    <item>
+      <title>Customer Booking Page</title>
+      <link>https://example.org/booking-page/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/booking-page/</guid>
+      <description>Customer Booking Page Direct Tidycal link</description>
     </item>
     <item>
       <title>Services</title>
