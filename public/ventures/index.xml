@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CMFW Media</title>
-    <link>https://cmfw-media-netlify-site.netlify.app/</link>
-    <description>Recent content on CMFW Media</description>
+    <title>Ventures on CMFW Media</title>
+    <link>https://cmfw-media-netlify-site.netlify.app/ventures/</link>
+    <description>Recent content in Ventures on CMFW Media</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://cmfw-media-netlify-site.netlify.app/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About</title>
-      <link>https://cmfw-media-netlify-site.netlify.app/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://cmfw-media-netlify-site.netlify.app/about/</guid>
-      <description>Designed for engineersBuild anything you want with ApertureLearn moreBuyAnother headlineAnd an even wittier subheading.
-Another headlineAnd an even wittier subheading.
-Another headlineAnd an even wittier subheading.
-Another headlineAnd an even wittier subheading.</description>
-    </item>
+    <atom:link href="https://cmfw-media-netlify-site.netlify.app/ventures/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Aero360 Solutions</title>
       <link>https://cmfw-media-netlify-site.netlify.app/ventures/aero360solutions/</link>

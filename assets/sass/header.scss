@@ -1,0 +1,87 @@
+.navbar-nav .nav-item:first-child .nav-link {
+    visibility: hidden;
+}
+
+.navbar-nav .nav-item:first-child .nav-link:after {
+    content: 'Home';
+    visibility: visible;
+}
+
+.dropdown-item:active,
+.dropdown-item.active {
+    background-color: $red
+}
+
+.nav-link.show::after {
+    transform: rotate(180deg);
+}
+
+.navbar {
+    background-color: white !important;
+}
+
+.contact-btn {
+    font-size:17px;
+    text-transform: uppercase;
+    background-color:none;
+    border: 1px solid black;
+}
+
+.navbar-nav li:first-child {
+    content: 'Home';
+}
+
+.dropdown-menu {
+    border-radius: 0;
+    padding: 0;
+
+    .dropdown-item {
+        font-size: 17px;
+        color: white;
+    }
+}
+
+.nav-link {
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    border-bottom: 2 solid orange;
+}
+
+//dropdown menu toggle on hover
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+
+.dropdown-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateX(-10px);
+    /* Slide in from the left */
+}
+
+/* Fade out and slide away when no longer hovered */
+.nav-item .dropdown-menu {
+    display: block;
+    opacity: 0;
+    transform: translateX(-20px);
+    /* Slide out to the left */
+}

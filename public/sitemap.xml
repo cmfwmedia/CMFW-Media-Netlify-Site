@@ -2,18 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/about/</loc>
+    <loc>https://cmfw-media-netlify-site.netlify.app/about/</loc>
   </url><url>
-    <loc>https://example.org/companies/a360s/</loc>
+    <loc>https://cmfw-media-netlify-site.netlify.app/ventures/aero360solutions/</loc>
   </url><url>
-    <loc>https://example.org/api/</loc>
+    <loc>https://cmfw-media-netlify-site.netlify.app/</loc>
   </url><url>
-    <loc>https://example.org/</loc>
+    <loc>https://cmfw-media-netlify-site.netlify.app/ventures/real-estate-photography/</loc>
   </url><url>
-    <loc>https://example.org/companies/</loc>
+    <loc>https://cmfw-media-netlify-site.netlify.app/ventures/saddle-creek-web-art/</loc>
   </url><url>
-    <loc>https://example.org/contact/</loc>
-  </url><url>
-    <loc>https://example.org/services/</loc>
+    <loc>https://cmfw-media-netlify-site.netlify.app/ventures/</loc>
   </url>
 </urlset>
