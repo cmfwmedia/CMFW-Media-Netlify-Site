@@ -1,0 +1,97 @@
+.navbar {
+    background-color: white !important;
+
+
+
+    .nav-item {
+
+        &:hover .nav-link::after,
+        .dropdown-menu:hover~.nav-link::after {
+            transform: rotate(-180deg);     
+        }
+
+        &:first-child .nav-link {
+            visibility: hidden;
+        }
+
+        &:first-child .nav-link:after {
+            content: 'Home';
+            visibility: visible;
+        }
+
+        .nav-link {
+            font-size: 17px;
+            text-transform: uppercase;
+            
+            &::after{
+                transition: transform 0.25s; /* Initial transition */
+                transform: rotate(0deg); /* Initial state */
+            }
+        }
+
+        &.dropdown {
+
+            .dropdown-menu {
+                border-radius: 0;
+                padding: 0;
+
+                .dropdown-item {
+                    font-size: 17px;
+                    color: white;
+
+                    &:active,
+                    &.active {
+                        background-color: $red
+                    }
+                }
+            }
+
+            &:hover>.dropdown-menu {
+                display: block;
+            }
+
+            &>.dropdown-toggle:active {
+                /*Without this, clicking will make it sticky*/
+                pointer-events: none;
+            }
+        }
+    }
+
+    .contact-btn {
+        font-size: 17px;
+        text-transform: uppercase;
+        background-color: none;
+        border: 2px solid #422800;
+        box-shadow: #422800 4px 4px 0 0;
+        padding:2px 5px;
+        &:active {
+            box-shadow: #422800 2px 2px 0 0;
+            transform: translate(2px, 2px);
+        }
+    }
+}
+
+
+
+
+
+// .dropdown-menu {
+//     opacity: 0;
+//     transition: opacity 0.3s, transform 0.3s;
+//     position: absolute;
+//     top: 100%;
+//     left: 0;
+//     z-index: 1;
+// }
+
+// .nav-item:hover .dropdown-menu {
+//     display: block;
+//     opacity: 1;
+//     transform: translateX(-10px);
+// }
+
+// .nav-item .dropdown-menu {
+//     display: block;
+//     opacity: 0;
+//     transform: translateX(-20px);
+// }

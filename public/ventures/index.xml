@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ventures on CMFW Media</title>
+    <link>https://cmfw-media-netlify-site.netlify.app/ventures/</link>
+    <description>Recent content in Ventures on CMFW Media</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://cmfw-media-netlify-site.netlify.app/ventures/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aero360 Solutions</title>
+      <link>https://cmfw-media-netlify-site.netlify.app/ventures/aero360solutions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://cmfw-media-netlify-site.netlify.app/ventures/aero360solutions/</guid>
+      <description>VenturesAero360 SolutionsQuickly design and customize responsive mobile-first sites with Bootstrap, the world’s mostpopular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensiveprebuilt components, and powerful JavaScript plugins.
+Open PageLinkedIn</description>
+    </item>
+    <item>
+      <title>Real Estate Photography</title>
+      <link>https://cmfw-media-netlify-site.netlify.app/ventures/real-estate-photography/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://cmfw-media-netlify-site.netlify.app/ventures/real-estate-photography/</guid>
+      <description>Real Estate PhotographyPage under construction</description>
+    </item>
+    <item>
+      <title>Saddle Creek Web Art</title>
+      <link>https://cmfw-media-netlify-site.netlify.app/ventures/saddle-creek-web-art/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://cmfw-media-netlify-site.netlify.app/ventures/saddle-creek-web-art/</guid>
+      <description>Saddle Creek Web ArtPage under construction</description>
+    </item>
+  </channel>
+</rss>

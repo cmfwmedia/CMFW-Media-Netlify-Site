@@ -1,0 +1,78 @@
+<header data-bs-theme="light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand {{ if .IsHome }} active {{ end }} " href="{{ .Site.Home.Permalink }}">
+                {{/* <img class=""
+                    src="https://images.squarespace-cdn.com/content/v1/6424bb54bd8dbd45e169a0a1/0bd039a5-9033-4b7b-bbd8-f9a388aa01c3/logo+no+text.png?format=300w"
+                    alt="CMFW Media logo" style="width:100px"> */}}
+                <span class="fs-4">CMFW MEDIA</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+
+
+                    {{ $currentPage := . }}
+
+                    {{ range .Site.Menus.main.ByWeight }}
+
+                    {{ if .HasChildren }}
+                    <li class="nav-item dropdown" data-bs-theme="dark">
+                        <a class='nav-link mx-2 dropdown-toggle  {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{ end }}'
+                            href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ .Title }}
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {{ range .Children }}
+                            <li>
+                                <a class='dropdown-item py-2 {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{ end }}'
+                                    href="{{ .URL }}"> {{ .Title }}</a>
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </li>
+
+                    {{ else }}
+                    <li class="nav-item">
+                        <a class='nav-link mx-2 {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active {{ end }}'
+                            aria-current="page" href="{{ absURL .URL }}"> {{ .Title }}</a>
+                    </li>
+
+                    {{ end }}
+                    {{ end }}
+
+                </ul>
+                <button type="button" class="btn contact-btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    Contact
+                </button>
+                <div class="modal" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Form</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                               This contact form is currently under construction
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,27 @@
+baseURL = 'https://cmfw-media-netlify-site.netlify.app/'
+languageCode = 'en-us'
+title = 'CMFW Media'
+
+disableKinds = ['taxonomy', 'term']
+
+[markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
+
+# Enable SASS processing
+[build]
+  writeStats = true
+  [build.processing]
+    sass = true
+
+ [menu]
+
+   [[menu.main]]
+      name = 'Home'
+      pageRef = '/'
+      weight = 10
+
+    [[menu.main]]
+      identifier = "Ventures"
+      title = "Ventures"
+      url = "/ventures/"
+      weight = 200

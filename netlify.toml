@@ -1,11 +1,14 @@
 # example netlify.toml
 [build]
-  command = "# no build command"
   functions = "netlify/functions"
   publish = "public"
+  command = "hugo --minify"
 
 [functions]
   node_bundler = "esbuild"
+
+[context.production.environment]
+  HUGO_VERSION = "0.120.4"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
