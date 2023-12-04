@@ -61,11 +61,38 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                               This contact form is currently under construction
+                                <!-- Contact Form -->
+                                <form data-netlify="true">
+                                    <div class="mb-3">
+                                        <label for="nameInput" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="nameInput" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="emailInput" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="emailInput" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phoneInput" class="form-label">Phone Number (Optional)</label>
+                                        <input type="tel" class="form-control" id="phoneInput"
+                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                            title="Phone number format: XXX-XXX-XXXX">
+                                        <small>Format: XXX-XXX-XXXX</small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="companyInput" class="form-label">Name of Company (Optional)</label>
+                                        <input type="text" class="form-control" id="companyInput">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inquiryTextarea" class="form-label">Inquiry</label>
+                                        <textarea class="form-control" id="inquiryTextarea" rows="4"
+                                            required></textarea>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
